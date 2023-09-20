@@ -14,5 +14,7 @@ const onSubmit = async (data) => {
 
 const form = new TaskForm(onSubmit);
 
-document.body.appendChild(form.render());
-document.body.appendChild(recipes.render());
+const root = document.getElementById('root');
+
+root.appendChild(form.render());
+root.appendChild(recipes.render());

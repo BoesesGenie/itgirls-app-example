@@ -16,6 +16,7 @@ class RecipeRepository {
       result.push(new Recipe(
         recipe.url,
         recipe.image,
+        recipe.label,
       ));
     });
 

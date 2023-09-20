@@ -11,3 +11,19 @@ body {
 html {
   font-size: 4.1vw;
 }
+
+.header {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: aquamarine;
+}
+
+.footer {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: aquamarine;
+}

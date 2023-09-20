@@ -1,9 +1,11 @@
+import {Item} from "./components/Item";
+import './styles.scss';
+
 class Recipes {
   #block = document.createElement('div');
   #recipes = [];
 
   update(recipes) {
-    console.log('DEBUG', recipes);
     this.#recipes = recipes;
 
     this.render();
@@ -12,19 +14,12 @@ class Recipes {
   render() {
     this.#block.innerHTML = '';
 
-    this.#recipes.forEach((recipe) => {
-      const image = document.createElement('img');
+    this.#recipes.forEach((recipe, index) => {
+      const itemClassName = `recipes__item_${index % 2 === 0 ? 'odd' : 'even'}`;
 
-      image.src = recipe.image;
+      const recipeItem = new Item(recipe, itemClassName);
 
-      this.#block.appendChild(image);
-
-      const link = document.createElement('a');
-
-      link.href = recipe.url;
-      link.innerText = 'Link';
-
-      this.#block.appendChild(link);
+      this.#block.appendChild(recipeItem.render());
     });
 
     return this.#block;
