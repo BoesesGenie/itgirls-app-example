@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: './src/index.tsx',
   module: {
     rules: [
       {
@@ -11,13 +11,22 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ['ts-loader'],
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(eot|jpg|jpeg|png|svg)$/,
+        type: 'asset/resource',
       },
     ],
   },
   resolve: {
-    extensions: ['.jsx', '.js'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   resolveLoader: {
     modules: [
