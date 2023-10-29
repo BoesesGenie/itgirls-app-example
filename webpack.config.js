@@ -46,7 +46,7 @@ module.exports = {
   },
   devServer: {
     static: {
-      directory: path.join(process.cwd(), 'build'),
+      directory: path.join(process.cwd(), 'bundle'),
     },
     client: {
       progress: true,
