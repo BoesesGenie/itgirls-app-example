@@ -1,28 +1,8 @@
-import React, { FC, useState } from 'react';
-import { Button } from './ui-kit/Button';
-import { WordCard } from './components/WordCard';
-import Word from '../domain/model/Word';
+import React, { FC } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import router from '../application/router';
 import './assets/global.scss';
 
-const App: FC = () => {
-  const [word, setWord] = useState(
-    new Word('translation', '[trænsˈleɪʃən]', 'перевод'),
-  );
-
-  const onButtonClick = () => {
-    const word = new Word('word', 'asdfasdf', 'слово');
-
-    setWord(word);
-  };
-
-  console.log('RENDER App');
-
-  return (
-    <React.StrictMode>
-      <WordCard word={word} />
-      <Button onClick={onButtonClick}>Кнопка</Button>
-    </React.StrictMode>
-  );
-};
+const App: FC = () => <RouterProvider router={router} />;
 
 export { App };
