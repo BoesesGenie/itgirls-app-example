@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
-import Word from '../../../domain/model/Word';
+import React, { FC, useContext } from 'react';
+import { WordsContext } from '../../../application/context/WordsContext';
 
-interface WordCardProps {
-  word: Word;
-}
+const WordCard: FC = () => {
+  const { word } = useContext(WordsContext);
 
-const WordCard: FC<WordCardProps> = ({ word }) => {
-  console.log('RENDER WordCard');
+  if (word === null) {
+    return null;
+  }
 
   return (
     <div>

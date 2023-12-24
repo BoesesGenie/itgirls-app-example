@@ -1,26 +1,21 @@
-import React, { FC, useState } from 'react';
-import Word from '../../../domain/model/Word';
+import React, { FC } from 'react';
 import { WordCard } from '../../components/WordCard';
-import { Button } from '../../ui-kit/Button';
 import { Layout } from '../../components/Layout';
+import { WordsContext } from '../../../application/context/WordsContext';
+import { useWordsStorage } from '../../../application/hooks/words/useWordsStorage';
+import { ButtonDelete } from './components/ButtonDelete';
+import { ButtonUpdate } from './components/ButtonUpdate';
 
 const HomePage: FC = () => {
-  const [word, setWord] = useState(
-    new Word('translation', '[trænsˈleɪʃən]', 'перевод'),
-  );
-
-  const onButtonClick = () => {
-    const word = new Word('word', 'asdfasdf', 'слово');
-
-    setWord(word);
-  };
-
-  console.log('RENDER App');
+  const state = useWordsStorage();
 
   return (
     <Layout>
-      <WordCard word={word} />
-      <Button onClick={onButtonClick}>Кнопка</Button>
+      <WordsContext.Provider value={state}>
+        <WordCard />
+        <ButtonDelete />
+        <ButtonUpdate />
+      </WordsContext.Provider>
     </Layout>
   );
 };
